@@ -1,0 +1,40 @@
+﻿@model IEnumerable<library.Models.Ark>
+
+@{
+    ViewData["Title"] = "library";
+}
+
+<h1>ספריה</h1>
+
+<p>
+    <a asp-action="CreateArc">צור ספריה</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.genre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.genre)
+            </td>
+            <td>
+                    @Html.ActionLink("הוסף מדף", "CreateShelf", new { libraryId = item.Id }) |
+                    @Html.ActionLink("הוסף ספר", "CreteBoox", new { libraryId = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

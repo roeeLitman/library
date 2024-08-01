@@ -1,0 +1,56 @@
+﻿@model library.Models.Book
+
+@{
+    ViewData["Title"] = "BookOnShelf";
+}
+
+<h1>BookOnShelf</h1>
+
+<h4>Book</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="BookOnShelf" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+@*             <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="genre" class="control-label"></label>
+                <input asp-for="genre" class="form-control" />
+                <span asp-validation-for="genre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Height" class="control-label"></label>
+                <input asp-for="Height" class="form-control" />
+                <span asp-validation-for="Height" class="text-danger"></span>
+            </div>
+
+            <input hidden="hidden" name="BookOnShelf" value="@Model.Shelf.Id" />
+                
+@*             <div class="form-group">
+                <label asp-for="BookOnShelf" class="control-label"></label>
+                <input asp-for="BookOnShelf" class="form-control" />
+                <span asp-validation-for="BookOnShelf" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
